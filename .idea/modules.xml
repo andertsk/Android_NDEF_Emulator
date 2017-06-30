@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/host-card-emulation-sample-master.iml" filepath="$PROJECT_DIR$/host-card-emulation-sample-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ndeftagemulator.iml" filepath="$PROJECT_DIR$/ndeftagemulator.iml" />
     </modules>
   </component>
 </project>
