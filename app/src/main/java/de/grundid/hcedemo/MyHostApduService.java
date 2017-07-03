@@ -91,18 +91,11 @@ public class MyHostApduService extends HostApduService {
 	}
 
 	private boolean isReadBinary(byte[] command) {
-		//Log.i(TAG, "bytes: " + byteArrayToHexString(command));
-			if (command.length == 5 &&
+		return 	command.length == 5 &&
 				command[0] == (byte)0x00 &&
 				command[1] == (byte)0xb0 &&
 				command[2] == (byte)0x00 &&
-				command[3] == (byte)0x00) {
-				//Log.i(TAG, "true");
-				return true;
-			} else {
-				//Log.i(TAG, "false");
-				return false;
-			}
+				command[3] == (byte)0x00;
 	}
 	public static byte[] BuildSelectApdu(String aid) {
 		// Format: [CLASS | INSTRUCTION | PARAMETER 1 | PARAMETER 2 | LENGTH | DATA]
@@ -133,13 +126,15 @@ public class MyHostApduService extends HostApduService {
 	}
 
 	public static byte[] getNDEFMessageBytes() {
-		AbsoluteUriRecord uriRecord1 = new AbsoluteUriRecord("http://verysoft.ru");
-        AbsoluteUriRecord uriRecord2 = new AbsoluteUriRecord("http://google.com");
+		//AbsoluteUriRecord uriRecord1 = new AbsoluteUriRecord("http://verysoft.ru");
+        //AbsoluteUriRecord uriRecord2 = new AbsoluteUriRecord("http://google.com");
+		TextRecord textRecord = new TextRecord("Hello WOrld!");
         //TextRecord textRecord = new TextRecord("Hello world!");
 
 		Message highLevelNDEFmessage = new Message();
-		highLevelNDEFmessage.add(uriRecord1);
-		highLevelNDEFmessage.add(uriRecord2);
+		//highLevelNDEFmessage.add(uriRecord1);
+		//highLevelNDEFmessage.add(uriRecord2);
+		highLevelNDEFmessage.add(textRecord);
 
 		NdefMessage lowLevelNDEFMessage = highLevelNDEFmessage.getNdefMessage();
 		return  lowLevelNDEFMessage.toByteArray();
