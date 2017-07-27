@@ -126,15 +126,10 @@ public class MyHostApduService extends HostApduService {
 	}
 
 	public static byte[] getNDEFMessageBytes() {
-		//AbsoluteUriRecord uriRecord1 = new AbsoluteUriRecord("http://verysoft.ru");
-        //AbsoluteUriRecord uriRecord2 = new AbsoluteUriRecord("http://google.com");
-		TextRecord textRecord = new TextRecord("Hello WOrld!");
-        //TextRecord textRecord = new TextRecord("Hello world!");
+		AbsoluteUriRecord uriRecord1 = new AbsoluteUriRecord("http://google.com");
 
 		Message highLevelNDEFmessage = new Message();
-		//highLevelNDEFmessage.add(uriRecord1);
-		//highLevelNDEFmessage.add(uriRecord2);
-		highLevelNDEFmessage.add(textRecord);
+		highLevelNDEFmessage.add(uriRecord1);
 
 		NdefMessage lowLevelNDEFMessage = highLevelNDEFmessage.getNdefMessage();
 		return  lowLevelNDEFMessage.toByteArray();
